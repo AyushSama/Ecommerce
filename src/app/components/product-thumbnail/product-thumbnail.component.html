@@ -1,4 +1,4 @@
-<mat-card class="example-card" appearance="outlined" style="width: 20vw;">
+<mat-card (click)="handleProduct()" class="example-card" appearance="outlined" style="width: 20vw;">
   <img mat-card-image src="{{product.image}}" alt="" />
   <mat-card-content>
     <div class="productName">{{product.title}}</div>

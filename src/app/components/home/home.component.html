@@ -1,6 +1,9 @@
 <app-slider [slides]="images"></app-slider>
 
-<div class="products" style="display:flex; flex-wrap: wrap; justify-content: space-around;">
+<div
+  class="products"
+  style="display: flex; flex-wrap: wrap; justify-content: space-around; padding-top: 5vh;"
+>
   @for (product of products; track $index) {
   <app-product-thumbnail [product]="product"></app-product-thumbnail>
   }
