@@ -1,0 +1,98 @@
+<section id="product-info">
+    <div class="item-image-parent">
+      <div class="item-list-vertical">
+        <div class="thumb-box">
+          <img src="https://i.ibb.co/VJf6fXm/thumb1.jpg" alt="thumbnail" />
+        </div>
+        <div class="thumb-box">
+          <img src="https://i.ibb.co/Jt5zc58/thumb2.jpg" alt="thumbnail" />
+        </div>
+        <div class="thumb-box">
+          <img src="https://i.ibb.co/Yf9LMpy/thumb3.jpg" alt="thumbnail" />
+        </div>
+        <div class="thumb-box">
+          <img src="https://i.ibb.co/60hPGy2/thumb4.jpg" alt="thumbnail" />
+        </div>
+      </div>
+      <div class="item-image-main">
+        <img src="{{ product.image }}" alt="default" />
+      </div>
+    </div>
+  
+    <div class="item-info-parent">
+      <!-- main info -->
+      <div class="main-info">
+        <h4>{{ product.title }}</h4>
+        <div class="star-rating"><span>★★★★</span>★</div>
+        <p>
+          Price: <span id="price">₹ {{ product.price }}</span>
+        </p>
+      </div>
+      <!-- Choose -->
+      <div class="select-items">
+        <div class="change-color">
+          <label><b>Colour:</b> Black</label><br />
+          <div class="thumb-box">
+            <img src="https://i.ibb.co/QjkJJk3/select1.jpg" alt="thumbnail" />
+          </div>
+          <div class="thumb-box">
+            <img src="https://i.ibb.co/C297yD0/select2.jpg" alt="thumbnail" />
+          </div>
+        </div>
+  
+        <div class="change-size">
+          <label><b>Size:</b></label
+          ><br />
+          <select>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+            <option>XL</option>
+            <option>2XL</option>
+          </select>
+        </div>
+  
+        <div class="description">
+          <ul>
+            <li>{{ product.description }}</li>
+            <li>Care Instructions: Machine Wash</li>
+            <li>Fit Type: Classic Fit</li>
+            <li>Color name: Black-White</li>
+            <li>Material: Cotton</li>
+            <li>Pattern: Solid</li>
+          </ul>
+        </div>
+        <button
+          class="addToCart"
+          style="
+            background-color: rgb(247, 202, 0);
+            padding: 0.5vw 2vw;
+            border-radius: 3vh;
+            border: none;
+          "
+        >
+          Add To Cart
+        </button>
+      </div>
+    </div>
+  </section>
+  
+  <div class="relatedProducts">
+    <div>Related Products</div>
+    <div
+      class="products"
+      style="
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding-top: 5vh;
+      "
+    >
+      @for (prod of products; track $index) { 
+          @if(prod.category == product.category && prod.id != product.id){
+              <app-product-thumbnail [product]="prod"></app-product-thumbnail>
+          }
+      }
+    </div>
+  </div>
+  

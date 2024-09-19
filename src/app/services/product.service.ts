@@ -9,6 +9,7 @@ export class ProductService {
   constructor() { }
 
   product!:Product;
+  products!:Product[];
 
   getProduct(){
     return this.product;
@@ -16,6 +17,14 @@ export class ProductService {
 
   setProduct(product:Product){
     this.product = product;
+  }
+
+  getProducts(){
+    return this.products;
+  }
+
+  setProducts(products:Product[]){
+    this.products = products;
   }
 }
 

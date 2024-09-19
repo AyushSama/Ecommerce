@@ -1,18 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../services/product.service';
+import { Component } from '@angular/core';
 import { Product } from '../../interfaces/Product';
+import { ProductService } from '../../services/product.service';
 import { MatIcon } from '@angular/material/icon';
-import { ProductThumbnailComponent } from "../product-thumbnail/product-thumbnail.component";
+import { ProductThumbnailComponent } from '../product-thumbnail/product-thumbnail.component';
 
 @Component({
-  selector: 'app-product',
+  selector: 'app-relatedproduct',
   standalone: true,
   imports: [MatIcon, ProductThumbnailComponent],
-  templateUrl: './product.component.html',
-  styleUrl: './product.component.scss'
+  templateUrl: './relatedproduct.component.html',
+  styleUrl: './relatedproduct.component.scss'
 })
-export class ProductComponent implements OnInit {
-  
+export class RelatedproductComponent {
   product!:Product;
   products!:Product[];
 
@@ -23,7 +22,4 @@ export class ProductComponent implements OnInit {
     this.products = this.productService.getProducts();
     console.log(this.product);    
   }
-  
-
-
 }

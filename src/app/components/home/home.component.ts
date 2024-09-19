@@ -4,6 +4,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Product } from '../../interfaces/Product';
 import { ProductThumbnailComponent } from "../product-thumbnail/product-thumbnail.component";
 import { SliderComponent } from "../slider/slider.component";
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,7 @@ export class HomeComponent implements OnInit {
   products!:Product[];
   images!:string[];
 
-  constructor(private apiService: ApiService){}
+  constructor(private apiService: ApiService,private productService:ProductService){}
 
   ngOnInit(): void {
       this.getProducts();
@@ -29,6 +30,7 @@ export class HomeComponent implements OnInit {
       next: (res: any) => {
         this.products = res;
         this.images = this.products.map(product => product.image);
+        this.productService.setProducts(res);
         console.log(this.images);
       },
       error: (error: HttpErrorResponse) => {

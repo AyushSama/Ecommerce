@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router'; // Import Router
+import { ActivatedRoute, Router } from '@angular/router'; // Import Router
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { Product } from '../../interfaces/Product';
@@ -14,11 +14,19 @@ import { ProductService } from '../../services/product.service';
 })
 export class ProductThumbnailComponent {
   @Input() product!: Product;
-
-  constructor(private router: Router, private productService: ProductService) {} // Inject Router
+  isOnProductRoute: boolean = false;
+  constructor(private route:Router, private router: Router, private productService: ProductService) {} // Inject Router
 
   handleProduct() {
     this.productService.setProduct(this.product);
-    this.router.navigate(['/product']); // Redirect to /products
+    this.product = this.productService.getProduct();
+    console.log(this.productService.getProduct());
+    this.isOnProductRoute = this.router.url.startsWith('/product');
+    if(!this.isOnProductRoute){
+      this.router.navigate(['/product']); // Redirect to /products
+    }
+    else{
+      this.router.navigate(['/relatedproduct']);
+    }
   }
 }
