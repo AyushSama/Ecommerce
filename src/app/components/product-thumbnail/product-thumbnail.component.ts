@@ -20,7 +20,7 @@ export class ProductThumbnailComponent {
   handleProduct() {
     this.productService.setProduct(this.product);
     this.product = this.productService.getProduct();
-    console.log(this.productService.getProduct());
+    // console.log(this.productService.getProduct());
     this.isOnProductRoute = this.router.url.startsWith('/product');
     if(!this.isOnProductRoute){
       this.router.navigate(['/product']); // Redirect to /products

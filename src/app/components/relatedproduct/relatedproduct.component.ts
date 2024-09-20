@@ -3,6 +3,7 @@ import { Product } from '../../interfaces/Product';
 import { ProductService } from '../../services/product.service';
 import { MatIcon } from '@angular/material/icon';
 import { ProductThumbnailComponent } from '../product-thumbnail/product-thumbnail.component';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-relatedproduct',
@@ -15,11 +16,17 @@ export class RelatedproductComponent {
   product!:Product;
   products!:Product[];
 
-  constructor(private productService : ProductService){}
+  constructor(private productService : ProductService,private cartService : CartService){}
 
   ngOnInit(): void {
     this.product = this.productService.getProduct();  
     this.products = this.productService.getProducts();
-    console.log(this.product);    
+    // console.log(this.product);    
+  }
+
+  handleAddToCart(){
+    this.cartService.setCartProducts(this.product);
+    alert("Added To CArt");
+    // console.log(this.cartService.getCartProducts());
   }
 }
