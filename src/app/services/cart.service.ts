@@ -25,4 +25,8 @@ export class CartService {
       this.cart.splice(index, 1); 
   }
 
+  emptyCartProduct(){
+    this.cart = [];
+  }
+
 }
