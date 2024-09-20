@@ -19,5 +19,10 @@ export class CartComponent implements OnInit {
       this.cartProducts = this.cartService.getCartProducts();
       console.log(this.cartProducts);
   }
+
+  handleRemoveCartProduct(product:Product){
+    this.cartService.removeCartProduct(product);
+    this.cartProducts = this.cartService.getCartProducts();
+  }
   
 }
